@@ -1,0 +1,21 @@
+<form method="get">
+<input type="text" name="search">
+<input type="submit">
+</form>
+<h1>Searching for - <%= @search_term %></h1>
+<table>
+	<tr>
+		<th>Image</th>
+		<th>Title</th>
+		<th>Rank</th>
+	</tr>
+	<% @recipes.each do |recipe| %>
+	<tr>
+		<td><%= link_to image_tag(recipe["image_url"]), recipe["source_url"]%></td>
+		<td><%= link_to raw(recipe["title"]), recipe["f2f_url"]%></td>
+		<td class=third><%= formatted_rate(recipe["social_rank"]) %></td>
+		<!--<td><%= recipe["social_rank"] %>-->
+	</tr>
+	<% end %>
+</table>
+<p>Powered By Food2Fork.com</p>
